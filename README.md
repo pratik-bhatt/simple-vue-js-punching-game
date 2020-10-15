@@ -14,7 +14,7 @@ If you want to intall and start learning VUE.JS, here are the documentaion link
 # installation 
 https://vuejs.org/v2/guide/installation.html
 
-#Geeting Started with VUE.JS
+# Geeting Started with VUE.JS
 https://vuejs.org/v2/guide/
 
 
