@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VueJS - Intro</title>
+	<link rel="stylesheet" type="text/css" href="game.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+
+<div id="app">
+	<div class="input-div">
+		Enter Your Name:-<br>
+		<input type="text" v-model="user" placeholder="Enter Your Name.." class="input-text"
+			   @click="user == 'PlayerX' ? user = '' : user = user "
+			   @blur="user == '' ? user = 'PlayerX' : user = user ">
+		<div>
+			Select Your Difficulty.
+			<button @click="setDifficulty('e')">Easy</button>
+			<button @click="setDifficulty('m')">Medium</button>
+			<button @click="setDifficulty('h')">High</button>
+		</div>
+		<br>
+		<div style="text-align: center">
+			Current Difficulty is <strong>{{ dif }}</strong>
+		</div>
+		<hr>
+	</div>
+	<div v-if="ended" id="text" class="button">
+		Woahh {{ user }} <br>
+		You broke the punching bag... Nice Work :-)<br>
+		Click on Punch Bag to restart..!!
+	</div>
+	<div id="bag" :class="{ burst: ended, move: animate, disabledButton: ended }"  @click="punch" :disabled="ended"> </div>
+
+		<div id="bag-health">
+			<div :style="{ width: health + '%' }"></div>
+		</div>
+
+		<div id="controls">
+<!--			<button @click="punch" :disabled="ended">Punch</button>-->
+			<button @click="restart">Restart</button>
+		</div>
+	</div>
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: '#app',
+
+			data: {
+				user : 'PlayerX',
+				health:100,
+				ended: false,
+				animate : false,
+				decrease : 10,
+				dif: 'Medium',
+			},
+			methods: {
+				punch(){
+					if(this.health > 0) {
+						this.health -= this.decrease;
+						this.animate = true;
+						if (this.health <= 0) {
+							this.ended = true;
+						}
+						setTimeout(() => this.changeAnimate(), 100);
+					}else{
+						// alert('The Bag has already been destroyed..!! Please Restart the Game..;-)')
+						this.restart();
+					}
+				},
+				changeAnimate(){
+					this.animate = false;
+				},
+				restart(){
+					this.health = 100;
+					this.ended = false;
+					this.animate = false;
+				},
+				setDifficulty(dif){
+					this.health = 100;
+					this.ended = false;
+					if (dif == 'h'){
+						this.decrease = 5;
+						this.dif = 'High';
+					}
+					if (dif == 'm'){
+						this.decrease = 10;
+						this.dif = 'Medium';
+					}
+					if (dif == 'e'){
+						this.decrease = 20;
+						this.dif = 'Easy';
+					}
+
+				},
+			},
+			computed: {
+
+			},
+		});
+	</script>
+
+</body>
+</html>

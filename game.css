@@ -1,0 +1,55 @@
+
+#bag {
+    width: 200px;
+    height: 500px;
+    margin: 0 auto;
+    background: url('img/bag.png') center no-repeat;
+    background-size: 80%;
+    cursor: grabbing;
+}
+#bag-health{
+    width: 200px;
+    border: 2px solid black;
+    margin: 0 auto 20px auto;
+}
+#bag-health div{
+    height: 20px;
+    background: crimson;
+}
+#controls{
+    width: 120px;
+    margin: 0 auto;
+}
+#bag.burst {
+    background: url('img/bag-burst.png') center no-repeat;
+    background-size: 80%;
+    cursor: grab;
+}
+#text{
+    z-index: 100;
+    position: relative;
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #2d2d2d;
+    text-align: center;
+}
+.move{
+    animation: tada;
+    animation-duration: 0.1s;
+}
+
+.input-div {
+    width: 100%;
+    /*padding: 20px;*/
+    /*margin: 40px;*/
+    border: 1px solid #d8d8d8;
+    text-align: center;
+}
+.input-text {
+    width: 35%;
+    padding: 20px;
+    margin: 0 20%;
+    border: 1px solid #d8d8d8;
+    text-align: center;
+}
