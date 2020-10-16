@@ -61,12 +61,17 @@
 			methods: {
 				punch(){
 					if(this.health > 0) {
-						this.health -= this.decrease;
-						this.animate = true;
-						if (this.health <= 0) {
+						if (this.health - this.decrease != 0) {
+							this.health -= this.decrease;
+							this.animate = true;
+							if (this.health <= 0) {
+								this.ended = true;
+							}
+							setTimeout(() => this.changeAnimate(), 100);
+						} else {
+							this.health = 0;
 							this.ended = true;
 						}
-						setTimeout(() => this.changeAnimate(), 100);
 					}else{
 						// alert('The Bag has already been destroyed..!! Please Restart the Game..;-)')
 						// this.restart();
