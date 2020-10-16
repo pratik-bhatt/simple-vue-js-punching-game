@@ -83,15 +83,15 @@
 				setDifficulty(dif){
 					this.health = 100;
 					this.ended = false;
-					if (dif == 'h'){
+					if (dif === 'h'){
 						this.decrease = 5;
 						this.dif = 'High';
 					}
-					if (dif == 'm'){
+					if (dif === 'm'){
 						this.decrease = 10;
 						this.dif = 'Medium';
 					}
-					if (dif == 'e'){
+					if (dif === 'e'){
 						this.decrease = 20;
 						this.dif = 'Easy';
 					}
@@ -101,6 +101,19 @@
 			computed: {
 
 			},
+			mounted() {
+				let self = this
+				setInterval(() => {
+					if (self.health < 100 && self.health != 0){
+						if(self.health + self.decrease > 100){
+							self.health = 100;
+						}else{
+							self.health = self.health + self.decrease;
+						}
+
+					}
+				}, 1000)
+			}
 		});
 	</script>
 
