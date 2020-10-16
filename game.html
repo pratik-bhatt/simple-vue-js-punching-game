@@ -18,7 +18,7 @@
 			Select Your Difficulty.
 			<button @click="setDifficulty('e')">Easy</button>
 			<button @click="setDifficulty('m')">Medium</button>
-			<button @click="setDifficulty('h')">High</button>
+			<button @click="setDifficulty('h')">Hard</button>
 		</div>
 		<br>
 		<div style="text-align: center">
@@ -29,7 +29,7 @@
 	<div v-if="ended" id="text" class="button">
 		Woahh {{ user }} <br>
 		You broke the punching bag... Nice Work :-)<br>
-		Click on Punch Bag to restart..!!
+		Click on Restart Button..!!
 	</div>
 	<div id="bag" :class="{ burst: ended, move: animate, disabledButton: ended }"  @click="punch" :disabled="ended"> </div>
 
@@ -69,7 +69,7 @@
 						setTimeout(() => this.changeAnimate(), 100);
 					}else{
 						// alert('The Bag has already been destroyed..!! Please Restart the Game..;-)')
-						this.restart();
+						// this.restart();
 					}
 				},
 				changeAnimate(){
@@ -102,17 +102,24 @@
 
 			},
 			mounted() {
-				let self = this
+				let dec = 10
 				setInterval(() => {
-					if (self.health < 100 && self.health != 0){
-						if(self.health + self.decrease > 100){
-							self.health = 100;
+					if (this.decrease == 5) {
+						dec = 20;
+					} else if (this.decrease == 10) {
+						dec = 10;
+					} else if (this.decrease == 20) {
+						dec = 5;
+					}
+					if (this.health < 100 && this.health != 0){
+						if(this.health + dec > 100){
+							this.health = 100;
 						}else{
-							self.health = self.health + self.decrease;
+							this.health = this.health + dec
 						}
 
 					}
-				}, 1000)
+				}, 1500)
 			}
 		});
 	</script>
