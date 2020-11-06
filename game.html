@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="html">
 <head>
 	<title>VueJS - Intro</title>
 	<link rel="stylesheet" type="text/css" href="game.css">
@@ -11,9 +11,7 @@
 <div id="app">
 	<div class="input-div">
 		Enter Your Name:-<br>
-		<input type="text" v-model="user" placeholder="Enter Your Name.." class="input-text"
-			   @click="user == 'PlayerX' ? user = '' : user = user "
-			   @blur="user == '' ? user = 'PlayerX' : user = user ">
+		<input type="text" v-model="user" placeholder="Enter Your Name.." class="input-text" @click="user == 'PlayerX' ? user = '' : user = user " @blur="user == '' ? user = 'PlayerX' : user = user ">
 		<div>
 			Select Your Difficulty.
 			<button @click="setDifficulty('e')">Easy</button>
@@ -124,7 +122,7 @@
 						}
 
 					}
-				}, 1500)
+				}, 800)
 			}
 		});
 	</script>
