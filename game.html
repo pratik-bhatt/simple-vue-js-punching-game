@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="html">
+<html>
 <head>
 	<title>VueJS - Intro</title>
 	<link rel="stylesheet" type="text/css" href="game.css">
@@ -93,11 +93,11 @@
 						this.dif = 'High';
 					}
 					if (dif === 'm'){
-						this.decrease = 8;
+						this.decrease = 10;
 						this.dif = 'Medium';
 					}
 					if (dif === 'e'){
-						this.decrease = 12;
+						this.decrease = 20;
 						this.dif = 'Easy';
 					}
 
@@ -112,9 +112,9 @@
 					if (this.decrease == 5) {
 						dec = 20;
 					} else if (this.decrease == 10) {
-						dec = 15;
-					} else if (this.decrease == 20) {
 						dec = 10;
+					} else if (this.decrease == 20) {
+						dec = 5;
 					}
 					if (this.health < 100 && this.health != 0){
 						if(this.health + dec > 100){
@@ -124,7 +124,7 @@
 						}
 
 					}
-				}, 800)
+				}, 1500)
 			}
 		});
 	</script>
