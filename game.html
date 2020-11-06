@@ -3,6 +3,7 @@
 <head>
 	<title>VueJS - Intro</title>
 	<link rel="stylesheet" type="text/css" href="game.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
@@ -10,7 +11,9 @@
 <div id="app">
 	<div class="input-div">
 		Enter Your Name:-<br>
-		<input type="text" v-model="user" placeholder="Enter Your Name.." class="input-text" @click="user == 'PlayerX' ? user = '' : user = user " @blur="user == '' ? user = 'PlayerX' : user = user ">
+		<input type="text" v-model="user" placeholder="Enter Your Name.." class="input-text"
+			   @click="user == 'PlayerX' ? user = '' : user = user "
+			   @blur="user == '' ? user = 'PlayerX' : user = user ">
 		<div>
 			Select Your Difficulty.
 			<button @click="setDifficulty('e')">Easy</button>
@@ -90,11 +93,11 @@
 						this.dif = 'High';
 					}
 					if (dif === 'm'){
-						this.decrease = 10;
+						this.decrease = 8;
 						this.dif = 'Medium';
 					}
 					if (dif === 'e'){
-						this.decrease = 20;
+						this.decrease = 12;
 						this.dif = 'Easy';
 					}
 
@@ -109,9 +112,9 @@
 					if (this.decrease == 5) {
 						dec = 20;
 					} else if (this.decrease == 10) {
-						dec = 10;
+						dec = 15;
 					} else if (this.decrease == 20) {
-						dec = 5;
+						dec = 10;
 					}
 					if (this.health < 100 && this.health != 0){
 						if(this.health + dec > 100){
@@ -121,7 +124,7 @@
 						}
 
 					}
-				}, 800)
+				}, 1500)
 			}
 		});
 	</script>
